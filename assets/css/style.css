@@ -22,11 +22,28 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc(100% / 10);
+   
     aspect-ratio: 1/1;
     border: 2px solid white;
 }
 
+.square-seven{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 7);
+    aspect-ratio: 1/1;
+    border: 2px solid white;
+}
+
+.square-nine{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 9);
+    aspect-ratio: 1/1;
+    border: 2px solid white;
+}
 
 .green-square{
     background-color: #7FFFD4;

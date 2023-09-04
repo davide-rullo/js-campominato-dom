@@ -73,6 +73,7 @@ function createTable(DOMelement, maxSquareNumber) {
         const square = document.createElement("div");
 
         square.className = "square";
+        square.style.width = `calc(100% / ${Math.sqrt(maxSquareNumber)})`;
         square.append(i + 1);
         gameTable.append(square);
 
