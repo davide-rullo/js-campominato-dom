@@ -36,8 +36,14 @@ body{
     justify-content: center;
     align-items: center;
     padding-top: 2rem;
+    gap: 1rem;
 }
 
 .d-none{
     display: none;
+}
+
+.form-select{
+    width: 20%;
+ 
 }

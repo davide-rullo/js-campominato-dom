@@ -1,9 +1,25 @@
 
 const gameTable = document.getElementById("game-table");
-const maxSquareNumber = 100;
+let maxSquareNumber = 100;
 const playBtn = document.getElementById("start-btn")
+const difficulty = document.getElementById("levels")
+
 playBtn.addEventListener("click", function () {
-    createTable(gameTable, 100)
+
+    
+
+    let levels = difficulty.value;
+
+    if (levels === "1") {
+        createTable(gameTable, 100);
+
+    } else if (levels === "2") {
+        
+        createTable(gameTable, 81);
+
+    } else if (levels === "3") {
+        createTable(gameTable, 49);
+    }
 });
 
 
@@ -16,6 +32,7 @@ function createTable(DOMelement, maxSquareNumber) {
         gameTable.append(square);
 
         playBtn.classList.add("d-none");
+        difficulty.classList.add("d-none");
         
         square.addEventListener("click", function () {
             square.classList.toggle("green-square");
