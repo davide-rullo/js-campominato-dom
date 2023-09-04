@@ -74,7 +74,14 @@ function createTable(DOMelement, maxSquareNumber) {
 
         square.addEventListener("click", function () {
             square.classList.toggle("green-square");
-            console.log("Clic sulla casella " + (i + 1));
+            let squareClickedNumber= i+1;
+            console.log("Clic sulla casella " + squareClickedNumber);
+            
+            if (bombs.includes(squareClickedNumber)) {
+                console.log("Hai perso");
+                square.classList.add("red-square");
+            }
+            
         })
     }
 }
