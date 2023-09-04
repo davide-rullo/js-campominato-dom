@@ -3,7 +3,7 @@ const gameTable = document.getElementById("game-table");
 let maxSquareNumber = 100;
 const playBtn = document.getElementById("start-btn")
 const difficulty = document.getElementById("levels")
-
+let bombs = [];
 playBtn.addEventListener("click", function () {
 
     
@@ -12,13 +12,32 @@ playBtn.addEventListener("click", function () {
 
     if (levels === "1") {
         createTable(gameTable, 100);
+        
+        for (let i = 1; i <= 16; i++) {
+            let randomNumber = Math.floor(Math.random() * 100) + 1;
+            bombs.push(randomNumber);
+            
+        }
+        
 
     } else if (levels === "2") {
-        
         createTable(gameTable, 81);
+       
+        for (let i = 1; i <= 16; i++) {
+            let randomNumber = Math.floor(Math.random() * 81) + 1;
+            bombs.push(randomNumber);
+            
+        }
+        
 
     } else if (levels === "3") {
         createTable(gameTable, 49);
+        
+        for (let i = 1; i <= 16; i++) {
+            let randomNumber = Math.floor(Math.random() * 49) + 1;
+            bombs.push(randomNumber);
+            
+        }
     }
 });
 
