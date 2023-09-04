@@ -4,6 +4,7 @@ let maxSquareNumber = 100;
 const playBtn = document.getElementById("start-btn")
 const difficulty = document.getElementById("levels")
 let bombs = [];
+
 playBtn.addEventListener("click", function () {
 
 
@@ -62,7 +63,10 @@ playBtn.addEventListener("click", function () {
 
 
 function createTable(DOMelement, maxSquareNumber) {
+  
     let gameIsNotOver = true;
+    let score = 0;
+
     for (let i = 0; i < maxSquareNumber; i++) {
         const square = document.createElement("div");
 
@@ -72,11 +76,15 @@ function createTable(DOMelement, maxSquareNumber) {
 
         playBtn.classList.add("d-none");
         difficulty.classList.add("d-none");
-
+       
         square.addEventListener("click", function () {
+          
+            score ++;
             if (gameIsNotOver) {
                 square.classList.toggle("green-square");
                 let squareClickedNumber = i + 1;
+               
+                console.log(score);
                 console.log("Clic sulla casella " + squareClickedNumber);
 
 
@@ -85,7 +93,7 @@ function createTable(DOMelement, maxSquareNumber) {
                     gameIsNotOver = false
                     console.log("Hai perso");
                     square.classList.add("red-square");
-                   
+                    console.log("Punteggio: " + (score -1));
                 }
             }
         })
