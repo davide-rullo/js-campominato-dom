@@ -4,7 +4,7 @@ let maxSquareNumber = 100;
 const playBtn = document.getElementById("start-btn")
 const difficulty = document.getElementById("levels")
 let bombs = [];
-
+let safeNumbers;
 playBtn.addEventListener("click", function () {
 
 
@@ -13,7 +13,7 @@ playBtn.addEventListener("click", function () {
 
     if (levels === "1") {
         createTable(gameTable, 100);
-
+        safeNumbers = 84;
 
         while (bombs.length < 16) {
             let randomNumber;
@@ -29,7 +29,7 @@ playBtn.addEventListener("click", function () {
 
     } else if (levels === "2") {
         createTable(gameTable, 81);
-
+        safeNumbers = 65;
 
         while (bombs.length < 16) {
             let randomNumber;
@@ -45,6 +45,7 @@ playBtn.addEventListener("click", function () {
 
     } else if (levels === "3") {
         createTable(gameTable, 49);
+        safeNumbers = 33;
 
 
         while (bombs.length < 16) {
@@ -63,7 +64,7 @@ playBtn.addEventListener("click", function () {
 
 
 function createTable(DOMelement, maxSquareNumber) {
-  
+
     let gameIsNotOver = true;
     let score = 0;
 
@@ -76,24 +77,28 @@ function createTable(DOMelement, maxSquareNumber) {
 
         playBtn.classList.add("d-none");
         difficulty.classList.add("d-none");
-       
+
         square.addEventListener("click", function () {
-          
-            score ++;
+
+            
             if (gameIsNotOver) {
-                square.classList.toggle("green-square");
+                square.classList.add("green-square");
                 let squareClickedNumber = i + 1;
-               
+                score++;
+
                 console.log(score);
                 console.log("Clic sulla casella " + squareClickedNumber);
-
+                if (score === safeNumbers) {
+                    gameIsNotOver = false
+                    console.log("Complimenti, Hai vinto!");
+                }
 
 
                 if (bombs.includes(squareClickedNumber)) {
                     gameIsNotOver = false
                     console.log("Hai perso");
                     square.classList.add("red-square");
-                    console.log("Punteggio: " + (score -1));
+                    console.log("Punteggio: " + (score - 1));
                 }
             }
         })
