@@ -67,7 +67,7 @@ function createTable(DOMelement, maxSquareNumber) {
 
     let gameIsNotOver = true;
     let score = 0;
-    let squareClicked = false;
+    
 
     for (let i = 0; i < maxSquareNumber; i++) {
         const square = document.createElement("div");
@@ -82,14 +82,11 @@ function createTable(DOMelement, maxSquareNumber) {
         square.addEventListener("click", function () {
 
 
-            if (gameIsNotOver) {
+            if (gameIsNotOver && !square.classList.contains("green-square")) {
                 square.classList.add("green-square");
                 let squareClickedNumber = i + 1;
-                if (square.classList.contains("green-square") && squareClicked === false) {
-
+                   
                     score++;
-                    squareClicked = true;
-                }
 
                 console.log(score);
                 console.log("Clic sulla casella " + squareClickedNumber);
