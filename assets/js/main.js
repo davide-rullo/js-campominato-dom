@@ -13,7 +13,7 @@ playBtn.addEventListener("click", function () {
     if (levels === "1") {
         createTable(gameTable, 100);
 
-        
+
         while (bombs.length < 16) {
             let randomNumber;
             do {
@@ -45,7 +45,7 @@ playBtn.addEventListener("click", function () {
     } else if (levels === "3") {
         createTable(gameTable, 49);
 
-        
+
         while (bombs.length < 16) {
             let randomNumber;
             do {
@@ -62,6 +62,7 @@ playBtn.addEventListener("click", function () {
 
 
 function createTable(DOMelement, maxSquareNumber) {
+    let gameIsNotOver = true;
     for (let i = 0; i < maxSquareNumber; i++) {
         const square = document.createElement("div");
 
@@ -73,15 +74,20 @@ function createTable(DOMelement, maxSquareNumber) {
         difficulty.classList.add("d-none");
 
         square.addEventListener("click", function () {
-            square.classList.toggle("green-square");
-            let squareClickedNumber= i+1;
-            console.log("Clic sulla casella " + squareClickedNumber);
-            
-            if (bombs.includes(squareClickedNumber)) {
-                console.log("Hai perso");
-                square.classList.add("red-square");
+            if (gameIsNotOver) {
+                square.classList.toggle("green-square");
+                let squareClickedNumber = i + 1;
+                console.log("Clic sulla casella " + squareClickedNumber);
+
+
+
+                if (bombs.includes(squareClickedNumber)) {
+                    gameIsNotOver = false
+                    console.log("Hai perso");
+                    square.classList.add("red-square");
+                   
+                }
             }
-            
         })
     }
 }
